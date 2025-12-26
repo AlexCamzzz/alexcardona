@@ -5,47 +5,56 @@ import { useState, useMemo } from 'react'
 interface Tech {
     name: string
     years: number
-    category: 'Frontend' | 'Backend' | 'Platforms' | 'Infrastructure'
-    size: 'small' | 'medium' | 'large'
+    category: 'Desktop' | 'Web Frontend' | 'Backend' | 'Database' | 'Cloud & Tools'
+    proficiency: 'expert' | 'advanced' | 'proficient'
 }
 
 const technologies: Tech[] = [
-    // Frontend
-    { name: 'TypeScript', years: 3, category: 'Frontend', size: 'large' },
-    { name: 'Vue & Nuxt', years: 3, category: 'Frontend', size: 'medium' },
-    { name: 'React', years: 2, category: 'Frontend', size: 'medium' },
-    { name: 'Tailwind CSS', years: 3, category: 'Frontend', size: 'medium' },
-    { name: 'Inertia.js', years: 1, category: 'Frontend', size: 'small' },
-    { name: 'Next.js', years: 1, category: 'Frontend', size: 'small' },
+    // Desktop (tu especialidad principal)
+    { name: 'C# & .NET 8', years: 5, category: 'Desktop', proficiency: 'expert' },
+    { name: 'WPF/MVVM', years: 4, category: 'Desktop', proficiency: 'expert' },
+    { name: 'Avalonia UI', years: 2, category: 'Desktop', proficiency: 'advanced' },
+    { name: 'WinForms', years: 4, category: 'Desktop', proficiency: 'advanced' },
+
+    // Web Frontend
+    { name: 'Vue.js 3', years: 3, category: 'Web Frontend', proficiency: 'expert' },
+    { name: 'Nuxt 3', years: 3, category: 'Web Frontend', proficiency: 'expert' },
+    { name: 'TypeScript', years: 3, category: 'Web Frontend', proficiency: 'advanced' },
+    { name: 'Tailwind CSS', years: 3, category: 'Web Frontend', proficiency: 'advanced' },
+    { name: 'React', years: 2, category: 'Web Frontend', proficiency: 'proficient' },
 
     // Backend
-    { name: 'C#', years: 5, category: 'Backend', size: 'large' },
-    { name: 'ASP.NET Core', years: 3, category: 'Backend', size: 'medium' },
-    { name: 'Laravel', years: 1, category: 'Backend', size: 'small' },
-    { name: 'Django', years: 1, category: 'Backend', size: 'small' },
-    { name: 'PHP', years: 2, category: 'Backend', size: 'small' },
+    { name: 'ASP.NET Core', years: 3, category: 'Backend', proficiency: 'advanced' },
+    { name: 'Node.js', years: 2, category: 'Backend', proficiency: 'proficient' },
+    { name: 'Laravel/PHP', years: 1, category: 'Backend', proficiency: 'proficient' },
+    { name: 'Python', years: 2, category: 'Backend', proficiency: 'advanced' },
 
-    // Platforms
-    { name: 'WPF', years: 3, category: 'Platforms', size: 'medium' },
-    { name: 'Flutter', years: 2, category: 'Platforms', size: 'medium' },
-    { name: 'Avalonia UI', years: 1, category: 'Platforms', size: 'small' },
-    { name: 'WinForms', years: 4, category: 'Platforms', size: 'small' },
+    // Database
+    { name: 'SQL Server', years: 4, category: 'Database', proficiency: 'expert' },
+    { name: 'MongoDB', years: 2, category: 'Database', proficiency: 'advanced' },
 
-    // Infrastructure
-    { name: 'SQL Server', years: 4, category: 'Infrastructure', size: 'medium' },
-    { name: 'MongoDB', years: 2, category: 'Infrastructure', size: 'small' },
-    { name: 'AWS', years: 2, category: 'Infrastructure', size: 'small' },
-    { name: 'Docker', years: 2, category: 'Infrastructure', size: 'small' },
+    // Cloud & Tools
+    { name: 'AWS', years: 2, category: 'Cloud & Tools', proficiency: 'proficient' },
+    { name: 'Docker', years: 2, category: 'Cloud & Tools', proficiency: 'proficient' },
+    { name: 'Git', years: 5, category: 'Cloud & Tools', proficiency: 'advanced' },
+    { name: 'Power Automate', years: 1, category: 'Cloud & Tools', proficiency: 'proficient' },
 ]
 
-const categories = ['All', 'Frontend', 'Backend', 'Platforms', 'Infrastructure'] as const
+const categories = ['All', 'Desktop', 'Web Frontend', 'Backend', 'Database', 'Cloud & Tools'] as const
 type Category = typeof categories[number]
 
 const categoryColors = {
-    Frontend: '#3B82F6',
-    Backend: '#10B981',
-    Platforms: '#8B5CF6',
-    Infrastructure: '#F59E0B',
+    'Desktop': '#DC2626',
+    'Web Frontend': '#3B82F6',
+    'Backend': '#10B981',
+    'Database': '#8B5CF6',
+    'Cloud & Tools': '#F59E0B',
+}
+
+const proficiencyLabels = {
+    expert: 'Expert',
+    advanced: 'Advanced',
+    proficient: 'Proficient',
 }
 
 export default function TechStack() {
@@ -57,6 +66,13 @@ export default function TechStack() {
         }
         return technologies.filter(tech => tech.category === activeFilter)
     }, [activeFilter])
+
+    const stats = useMemo(() => ({
+        total: technologies.length,
+        experience: Math.max(...technologies.map(t => t.years)),
+        expertise: technologies.filter(t => t.proficiency === 'expert').length,
+        active: technologies.filter(t => t.years >= 2).length,
+    }), [])
 
     return (
         <section
@@ -92,14 +108,13 @@ export default function TechStack() {
                     </h2>
 
                     <p className="text-base md:text-lg text-[var(--foreground-secondary)] max-w-2xl mx-auto leading-relaxed">
-                        A comprehensive overview of the technologies I work with,
-                        from frontend frameworks to cloud infrastructure.
+                        Specialized in .NET desktop applications and modern web platforms,
+                        with a focus on building scalable solutions from architecture to deployment.
                     </p>
                 </div>
 
-                {/* Controls */}
+                {/* Filter buttons */}
                 <div className="mb-12">
-                    {/* Filter buttons */}
                     <div className="flex flex-wrap justify-center gap-3">
                         {categories.map((category) => (
                             <button
@@ -119,7 +134,7 @@ export default function TechStack() {
                     </div>
                 </div>
 
-                {/* Masonry Grid */}
+                {/* Tech Grid */}
                 {filteredTechs.length > 0 ? (
                     <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
                         {filteredTechs.map((tech, index) => {
@@ -137,16 +152,17 @@ export default function TechStack() {
                                     <article
                                         className={[
                                             'group relative rounded-2xl border-2 bg-[var(--background-elevated)]',
-                                            'transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[var(--metallic-primary)]',
-                                            tech.size === 'large' ? 'p-8' : tech.size === 'medium' ? 'p-6' : 'p-5',
-                                            'border-[var(--border)]'
+                                            'transition-all duration-300 hover:shadow-xl hover:-translate-y-1',
+                                            tech.proficiency === 'expert'
+                                                ? 'border-[var(--accent-primary)] p-8'
+                                                : 'border-[var(--border)] hover:border-[var(--metallic-primary)] p-6'
                                         ].join(' ')}
                                     >
                                         {/* Header */}
-                                        <div className="flex items-start justify-between mb-4">
+                                        <div className="flex items-start justify-between mb-3 gap-2">
                                             {/* Category badge */}
                                             <span
-                                                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border"
+                                                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium border shrink-0"
                                                 style={{
                                                     backgroundColor: `${categoryColor}15`,
                                                     borderColor: `${categoryColor}40`,
@@ -159,7 +175,7 @@ export default function TechStack() {
 
                                             {/* Years badge */}
                                             <span
-                                                className="px-3 py-1 rounded-full text-xs font-bold font-mono"
+                                                className="px-3 py-1 rounded-full text-xs font-bold font-mono shrink-0"
                                                 style={{
                                                     backgroundColor: 'var(--metallic-light)',
                                                     color: 'var(--metallic-dark)',
@@ -172,12 +188,39 @@ export default function TechStack() {
                                         {/* Tech name */}
                                         <h3
                                             className={[
-                                                'font-bold text-[var(--foreground)] leading-tight',
-                                                tech.size === 'large' ? 'text-3xl' : tech.size === 'medium' ? 'text-2xl' : 'text-xl'
+                                                'font-bold text-[var(--foreground)] leading-tight mb-2',
+                                                tech.proficiency === 'expert' ? 'text-3xl' : 'text-xl'
                                             ].join(' ')}
                                         >
                                             {tech.name}
                                         </h3>
+
+                                        {/* Proficiency indicator */}
+                                        <div className="flex items-center gap-2">
+                                            <div className="flex-1 h-1.5 bg-[var(--background-secondary)] rounded-full overflow-hidden">
+                                                <div
+                                                    className="h-full rounded-full transition-all duration-500"
+                                                    style={{
+                                                        width: tech.proficiency === 'expert' ? '100%'
+                                                            : tech.proficiency === 'advanced' ? '75%'
+                                                                : '50%',
+                                                        backgroundColor: categoryColor,
+                                                    }}
+                                                />
+                                            </div>
+                                            <span className="text-xs font-medium text-[var(--foreground-secondary)]">
+                                                {proficiencyLabels[tech.proficiency]}
+                                            </span>
+                                        </div>
+
+                                        {/* Expert badge */}
+                                        {tech.proficiency === 'expert' && (
+                                            <div className="absolute -top-3 -right-3">
+                                                <div className="bg-[var(--accent-primary)] text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg">
+                                                    ⭐ Expert
+                                                </div>
+                                            </div>
+                                        )}
 
                                         {/* Hover glow effect */}
                                         <div
@@ -228,10 +271,10 @@ export default function TechStack() {
                 <div className="mt-20 pt-12 border-t-2 border-[var(--border)]">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         {[
-                            { label: 'Technologies', value: technologies.length },
-                            { label: 'Years Experience', value: '5' },
-                            { label: 'Projects Delivered', value: '10+' },
-                            { label: 'Masteries', value: '4' },
+                            { label: 'Technologies', value: stats.total },
+                            { label: 'Years Experience', value: stats.experience },
+                            { label: 'Expert Level', value: stats.expertise },
+                            { label: 'Active Stack', value: stats.active },
                         ].map((stat, i) => (
                             <div key={i} className="text-center">
                                 <div className="text-3xl md:text-4xl font-bold text-[var(--accent-primary)] mb-2">

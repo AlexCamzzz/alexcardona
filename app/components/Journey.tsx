@@ -14,56 +14,57 @@ const journeyData: JourneyCard[] = [
     {
         year: '2021',
         title: 'Early Beginnings',
-        description: 'Started my development journey at university',
+        description: 'Started development journey at university',
         achievements: [
             'First production app: Library Management System',
-            'Learned C# and WinForms',
+            'Learned C# and WinForms fundamentals',
             'Foundation in strongly-typed OOP'
         ],
         technologies: ['C#', 'WinForms', '.NET']
     },
     {
         year: '2022-2023',
-        title: 'WPF Migration & Growth',
-        description: 'Expanded into desktop application architecture',
+        title: 'Desktop Architecture',
+        description: 'Deep dive into enterprise desktop applications',
         achievements: [
-            'Migrated projects from WinForms to WPF',
+            'Migrated from WinForms to WPF/MVVM',
             'Built Prometheus Suite for logistics',
-            'Implemented MVVM patterns'
+            'Deployed across 16+ branches',
+            'Eliminated 100% Excel dependencies'
         ],
-        technologies: ['WPF', 'MVVM', 'C#', 'Desktop']
+        technologies: ['WPF', 'MVVM', 'SQL Server', 'C#']
     },
     {
         year: '2024',
-        title: 'TURBOPAQ & Recognition',
-        description: 'Multi-platform ecosystem development',
+        title: 'Full Stack Expansion',
+        description: 'Multi-platform development and recognition',
         achievements: [
             '2nd Place - Proyéctate 2024',
             'Top 30 - DETONAFEST 2024',
-            'Built mobile, web, and desktop platforms',
-            'AI integration with Python'
+            'Principal Consultant at TURBOPAQ',
+            'Built mobile, web, and desktop platforms'
         ],
-        technologies: ['Flutter', 'Vue 3', 'Python', 'AWS', 'Docker']
+        technologies: ['Flutter', 'Vue 3', 'Laravel', 'Python', 'Docker']
     },
     {
         year: '2025',
-        title: 'Promethean Tech',
-        description: 'Founded consultancy and expanded tech stack',
+        title: 'Cross-Platform & Cloud',
+        description: 'Modern stack and enterprise automation',
         achievements: [
-            'Launched Promethean Tech',
+            'Innovation Intern at KOSTAL Group',
             'Built FluentFlare (EdTech platform)',
             'Migrated to Avalonia for cross-platform',
-            'Mastered Laravel & Nuxt 3'
+            'Deployed cloud-native architectures'
         ],
-        technologies: ['Laravel', 'Nuxt 3', 'Avalonia', 'MongoDB', 'AWS Lambda']
+        technologies: ['Avalonia', 'Nuxt 3', 'MongoDB', 'AWS', 'RPA']
     },
     {
         year: 'Future',
         title: "What's Next?",
-        description: 'Expanding horizons',
+        description: 'Expanding technical horizons',
         achievements: [
-            'Scaling Promethean Tech',
             'Advanced cloud architectures',
+            'Scaling enterprise solutions',
             'Open source contributions',
             'Building the next generation of tools'
         ],
@@ -93,7 +94,7 @@ export default function Journey() {
                         My <span className="text-[var(--accent-primary)]">Journey</span>
                     </h2>
                     <p className="text-xl text-[var(--foreground-secondary)] max-w-2xl">
-                        From desktop applications to full-stack ecosystems — a continuous evolution of skills and ambition.
+                        From desktop applications to full-stack ecosystems — a continuous evolution of skills and impact.
                     </p>
                 </div>
 
