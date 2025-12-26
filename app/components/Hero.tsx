@@ -30,17 +30,18 @@ export default function Hero() {
 
                         {/* Tagline */}
                         <h2 className="text-3xl md:text-5xl font-bold text-[var(--foreground-secondary)]">
-                            I build <span className="text-[var(--accent-primary)]">complete ecosystems</span>,
+                            I build <span className="text-[var(--accent-primary)]">production systems</span>,
                             <br />
-                            not just apps.
+                            from architecture to deployment.
                         </h2>
 
                         {/* Description */}
                         <p className="text-xl text-[var(--foreground-secondary)] max-w-2xl leading-relaxed">
-                            Full Stack Software Architect specializing in <span className="text-[var(--accent-primary)] font-semibold">.NET</span>,
-                            <span className="text-[var(--accent-primary)] font-semibold"> Vue/Nuxt</span>, and
-                            <span className="text-[var(--accent-primary)] font-semibold"> Laravel</span>.
-                            From desktop to cloud, I architect solutions that solve real-world problems.
+                            Full Stack Software Engineer specializing in{' '}
+                            <span className="text-[var(--accent-primary)] font-semibold">.NET desktop applications</span>
+                            {' '}and{' '}
+                            <span className="text-[var(--accent-primary)] font-semibold">modern web platforms</span>.
+                            Currently building automation solutions at KOSTAL Group.
                         </p>
 
                         {/* CTA Buttons */}
@@ -48,7 +49,7 @@ export default function Hero() {
                             <button
                                 onClick={() => scrollToSection('projects')}
                                 className="px-8 py-4 bg-[var(--accent-primary)] hover:bg-[var(--accent-primary-hover)]
-                                text-white font-bold rounded-lg transition-all glow-strong"
+                                text-white font-bold rounded-lg transition-all"
                             >
                                 View My Work
                             </button>
@@ -65,10 +66,12 @@ export default function Hero() {
 
                     {/* Photo */}
                     <div className="relative lg:w-1/3 flex justify-center">
-                        <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border-2 border-[var(--accent-primary)] shadow-2xl shadow-[var(--accent-primary)]/20">
+                        <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden
+                                      border-2 border-[var(--accent-primary)] transition-all duration-300
+                                      hover:border-[var(--metallic-primary)] hover:-translate-y-1">
                             <Image
                                 src="/Hero.jpg"
-                                alt="Alexandro Cardona - Full Stack Software Architect"
+                                alt="Alexandro Cardona - Full Stack Software Engineer"
                                 fill
                                 className="object-cover object-[center_20%]"
                                 priority
